@@ -55,8 +55,26 @@ const Chart = () => {
     /* Use <Bar /> component to render a bar chart. */
     <div className='chart'>
         <Bar
-          data={data} // Pass chart data from state
-        />
+          data={data} 
+          options={{
+            plugins: {
+              // Add chart title
+              title: { 
+                display: true,
+                text: 'Largest Cities in MA',
+                font: {
+                  size: 25
+                }
+              },
+              // Move chart legend to right
+              legend: {
+                display: true,
+                position: 'right'
+              }
+            },
+         }}
+      />
+
     </div>
   )
 }
