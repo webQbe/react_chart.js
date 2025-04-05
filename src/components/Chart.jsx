@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 
-const Chart = ({ chartData, legendPosition }) => { // Receive props from App.jsx
+const Chart = ({ chartData, legendPosition, location }) => { // Receive props from App.jsx
 
   // Guard clause to prevent rendering if data is missing
   if (!chartData || !chartData.labels || !chartData.datasets) {
@@ -34,7 +34,8 @@ const Chart = ({ chartData, legendPosition }) => { // Receive props from App.jsx
   const [options] = useState({
     displayTitle: true,     // whether to show the chart title
     displayLegend: true,    // whether to show the legend
-    legendPosition: 'right' //  the position of the legend (e.g. 'top', 'right', 'bottom', 'left')
+    legendPosition: 'right', //  the position of the legend (e.g. 'top', 'right', 'bottom', 'left')
+    location: 'MA' // Use as default if not passed as a prop
   })
 
   /* Rendering the Chart */
@@ -48,14 +49,14 @@ const Chart = ({ chartData, legendPosition }) => { // Receive props from App.jsx
               // Add chart title
               title: { 
                 display: options.displayTitle, // Controls if the title is shown
-                text: 'Largest Cities in MA',
+                text: `Largest Cities in ${ location || options.location }`, // prop's location is prioritized
                 font: {
                   size: 25
                 }
               },
               legend: {
                 display: options.displayLegend,  // Controls if the legend is shown
-                position: legendPosition // Sets the position passed in App.jsx
+                position: legendPosition // Sets the position
               }
             },
          }}

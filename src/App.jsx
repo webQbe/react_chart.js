@@ -55,6 +55,7 @@ function App() {
         <Chart 
           chartData={chartData} // Pass chartData as a prop to <Chart />
           legendPosition="bottom" // Pass legend position
+          // location="Massachusetts"
         /> 
       </div>
   )
