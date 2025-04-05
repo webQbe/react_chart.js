@@ -10,7 +10,7 @@ import {
   LinearScale,
   Title,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 
 ChartJS.register(
@@ -23,32 +23,12 @@ ChartJS.register(
 );
 
 
-const Chart = () => {
+const Chart = ({ chartData }) => { // Receive prop from App.jsx
 
-  /* Chart State */
-  const [data, setData] = useState({
-      // x-axis labels (e.g. city names)
-      labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-      // Chart data group
-      datasets:[ 
-        { 
-          // Legend label ("Population")
-          label: 'Population',
-          // Y-values (population numbers)
-          data: [617594, 181045, 153060, 106519, 105162, 95072],
-          // Bar fill colors
-          backgroundColor: [
-                      'rgba(255, 99, 132, 0.6)', 
-                      'rgba(54, 162, 235, 0.6)', 
-                      'rgba(255, 206, 86, 0.6)', 
-                      'rgba(75, 192, 192, 0.6)', 
-                      'rgba(153, 102, 255, 0.6)', 
-                      'rgba(255, 159, 64, 0.6)', 
-                      'rgba(255, 99, 132, 0.6)', 
-                      ]
-        }
-      ]
-    })
+  // Guard clause to prevent rendering if data is missing
+  if (!chartData || !chartData.labels || !chartData.datasets) {
+    return <p>Loading chart data...</p>;
+  }
 
   /* Create options state variable  */
   const [options] = useState({
@@ -62,7 +42,7 @@ const Chart = () => {
     /* Use <Bar /> component to render a bar chart. */
     <div className='chart'>
         <Bar
-          data={data} 
+          data={chartData} // ← using the prop passed from App.jsx} 
           options={{
             plugins: {
               // Add chart title
