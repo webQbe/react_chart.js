@@ -4,22 +4,13 @@ import { Bar, Line, Pie } from 'react-chartjs-2' // Imports chart components fro
 
 /* Import and register required parts of Chart.js */
 import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
-  Legend,
+  Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, 
+  Tooltip, Legend, PointElement, ArcElement, LineElement
 } from 'chart.js';
 
 ChartJS.register(
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
-  Legend
+  BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, 
+  PointElement, ArcElement, LineElement
 );
 
 
@@ -42,7 +33,8 @@ const Chart = ({ chartData, legendPosition, location }) => { // Receive props fr
   return (
     /* Use <Bar /> component to render a bar chart. */
     <div className='chart'>
-        <Bar
+      {/* Bar Chart Component */}
+      <Bar
           data={chartData} // ← using the prop passed from App.jsx} 
           options={{
             plugins: {
@@ -60,7 +52,47 @@ const Chart = ({ chartData, legendPosition, location }) => { // Receive props fr
               }
             },
          }}
-      />
+       />
+
+      {/* Line Chart Component */}
+      <Line
+          data={chartData}
+          options={{
+            plugins: {
+              title: { 
+                display: options.displayTitle, 
+                text: `Largest Cities in ${ location || options.location }`,
+                font: {
+                  size: 25
+                }
+              },
+              legend: {
+                display: options.displayLegend,  
+                position: legendPosition
+              }
+            },
+         }}
+       />
+       
+      {/* Pie Chart Component */}
+      <Pie
+          data={chartData}
+          options={{
+            plugins: {
+              title: { 
+                display: options.displayTitle, 
+                text: `Largest Cities in ${ location || options.location }`,
+                font: {
+                  size: 25
+                }
+              },
+              legend: {
+                display: options.displayLegend,  
+                position: legendPosition
+              }
+            },
+         }}
+       />
 
     </div>
   )
