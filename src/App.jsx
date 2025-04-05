@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'                     // Import CSS styles
 import Chart from './components/Chart' // Import Chart component
 
+
 function App() {
 
    // Store chartData state 
@@ -53,6 +54,7 @@ function App() {
         <h2>React with Chart.js</h2>
         <Chart 
           chartData={chartData} // Pass chartData as a prop to <Chart />
+          legendPosition="bottom" // Pass legend position
         /> 
       </div>
   )

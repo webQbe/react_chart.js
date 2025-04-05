@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 
-const Chart = ({ chartData }) => { // Receive prop from App.jsx
+const Chart = ({ chartData, legendPosition }) => { // Receive props from App.jsx
 
   // Guard clause to prevent rendering if data is missing
   if (!chartData || !chartData.labels || !chartData.datasets) {
@@ -53,10 +53,9 @@ const Chart = ({ chartData }) => { // Receive prop from App.jsx
                   size: 25
                 }
               },
-              // Move chart legend to right
               legend: {
                 display: options.displayLegend,  // Controls if the legend is shown
-                position: options.legendPosition // Sets the legend's position
+                position: legendPosition // Sets the position passed in App.jsx
               }
             },
          }}
