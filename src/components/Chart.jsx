@@ -50,6 +50,13 @@ const Chart = () => {
       ]
     })
 
+  /* Create options state variable  */
+  const [options] = useState({
+    displayTitle: true,     // whether to show the chart title
+    displayLegend: true,    // whether to show the legend
+    legendPosition: 'right' //  the position of the legend (e.g. 'top', 'right', 'bottom', 'left')
+  })
+
   /* Rendering the Chart */
   return (
     /* Use <Bar /> component to render a bar chart. */
@@ -60,7 +67,7 @@ const Chart = () => {
             plugins: {
               // Add chart title
               title: { 
-                display: true,
+                display: options.displayTitle, // Controls if the title is shown
                 text: 'Largest Cities in MA',
                 font: {
                   size: 25
@@ -68,8 +75,8 @@ const Chart = () => {
               },
               // Move chart legend to right
               legend: {
-                display: true,
-                position: 'right'
+                display: options.displayLegend,  // Controls if the legend is shown
+                position: options.legendPosition // Sets the legend's position
               }
             },
          }}
