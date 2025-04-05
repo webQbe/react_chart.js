@@ -36,7 +36,11 @@ function App() {
                           'rgba(153, 102, 255, 0.6)', 
                           'rgba(255, 159, 64, 0.6)', 
                           'rgba(255, 99, 132, 0.6)', 
-                          ]
+                          ],
+              borderWidth: 1,         // Bar / Pie border default width
+              borderColor: '#777',    // Black border
+              hoverBorderWidth:3,     // Border width on hover
+              hoverBorderColor: '#000'// Border color on hover
             }
           ]
         })
